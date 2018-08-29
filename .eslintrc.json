@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "airbnb"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "globals": {
+      "module": true,
+      "require": true,
+      "process": true,
+      "console": true,
+      "describe": true,
+      "it": true
+  },
+  "env": {
+      "node": true,
+      "mocha": true
+  }
+}
