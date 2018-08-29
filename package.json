@@ -1,0 +1,28 @@
+{
+  "name": "referral-system-api",
+  "version": "1.0.0",
+  "description": "A system that exposes REST endpoints that allows contacts of a system the ability to referral people to the system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruqoyyasadiq/referral-system-api.git"
+  },
+  "keywords": [
+    "referral",
+    "contact",
+    "API",
+    "REST",
+    "endpoint",
+    "referrer",
+    "referee"
+  ],
+  "author": "Rukayat Sadiq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruqoyyasadiq/referral-system-api/issues"
+  },
+  "homepage": "https://github.com/ruqoyyasadiq/referral-system-api#readme"
+}
