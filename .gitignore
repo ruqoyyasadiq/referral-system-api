@@ -1,0 +1,10 @@
+.DS_Store
+
+# ignore env file
+.env
+
+# Log files
+*.log
+
+# Dependencies
+node_modules/
