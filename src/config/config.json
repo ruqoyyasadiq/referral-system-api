@@ -1,0 +1,19 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "database": "reference",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "use_env_variable": "TEST_DB",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "PROD_DB",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
