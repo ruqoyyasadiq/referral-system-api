@@ -33,7 +33,5 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Events');
-  }
+  down: queryInterface => queryInterface.dropTable('Events')
 };
