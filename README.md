@@ -16,9 +16,9 @@ git clone git@github.com:ruqoyyasadiq/referral-system-api.git && cd referral-sys
 ```
 
 - Rename `env.sample` as `.env` and set the contained values appropriate.
-```
-Note: The value `REFERRAL_POINTS` is set as an environment variable, to provide flexiblity of points assigned to referrer. For the sake of this project's requirement, the value of `REFERRAL_POINTS` should be left at 100 as set in the sample file. In subsequent versions, depending on the possibility of having multiple, different types of points, we should have a static table in the database that stores these points values.
-```
+
+> Note: The value `REFERRAL_POINTS` is set as an environment variable, to provide flexiblity of points assigned to referrer. For the sake of this project's requirement, the value of `REFERRAL_POINTS` should be left at 100 as set in the sample file. In subsequent versions, depending on the possibility of having multiple, different types of points, we should have a static table in the database that stores these points values.
+
 
 - Install Project dependencies
 ```
@@ -69,7 +69,7 @@ http://localhost:5000/v1/{resourceName}
 
 # TODOs
 - Paginate lists - Contacts and Leaderboard list
-- Implement actually SlackNotifier for referral creation
+- Implement actual `SlackNotifier` for referral creation
 - Increase Test Coverage
 - Set up static table for points. Assumptions made is: down the line there would be multiple types of points for (possibly) different kinds/levels of referrals. This should live in the DB
 
