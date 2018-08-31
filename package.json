@@ -4,7 +4,7 @@
   "description": "A system that exposes REST endpoints that allows contacts of a system the ability to referral people to the system.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha tests/**",
     "dev": "nodemon src/server.js --watch src",
     "start": "node src/server.js",
     "db:create": "cd src/ && sequelize db:create",
@@ -41,8 +41,13 @@
     "validator": "^10.7.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.0.0",
-    "nodemon": "^1.18.3"
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.3",
+    "sequelize-test-helpers": "^1.0.4",
+    "sinon": "^6.1.5",
+    "sinon-chai": "^3.2.0"
   }
 }
