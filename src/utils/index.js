@@ -7,7 +7,7 @@
  */
 const resourceExist = (req, res, resource) => {
   if (resource) {
-    res.status(409).send({
+    res.status(409).json({
       message: `Record already exists`
     })
     return true

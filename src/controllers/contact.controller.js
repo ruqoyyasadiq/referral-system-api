@@ -1,5 +1,6 @@
 const validator = require('validator')
 const Contact = require('../models').Contact
+const Referral = require('../models').Referral
 const models = require('../models')
 
 class contactController {
@@ -15,11 +16,11 @@ class contactController {
     return Contact.findAll(props)
     .then(contacts => {
       if (contacts.length === 0) {
-        return res.status(200).send({
+        return res.status(200).json({
           message: 'No Contact available. Start by creating a contact.'
         })
       } else {
-        res.status(200).send({ results: contacts })
+        res.status(200).json({ results: contacts })
       }
     })
   }
@@ -27,7 +28,7 @@ class contactController {
   static getContactById (req, res) {
     const { contactId } = req.params
     if (!validator.isNumeric(contactId)) {
-      res.status(400).send({
+      res.status(400).json({
         message: 'Invalid Contact ID. Value must be an integer.'
       })
     } else {
@@ -37,7 +38,7 @@ class contactController {
         }
       }).then(contact => {
         if (!contact) {
-          res.status(404).send({
+          res.status(404).json({
             message: 'Contact not found'
           })
         } else {
@@ -53,7 +54,7 @@ class contactController {
     const { contactId } = req.params
     const { body } = req
     if (validator.isEmpty(contactId) || !validator.isNumeric(contactId)) {
-      res.status(400).send({
+      res.status(400).json({
         message: 'Invalid Contact ID. Value must be an integer.'
       })
     } else {
@@ -69,6 +70,14 @@ class contactController {
     }
   }
 
+  static getLeaderBoard(req, res) {
+    models.sequelize.query('SELECT "Contacts".*, COUNT("Referrals".id) AS referrerCount  FROM "Contacts" LEFT JOIN "Referrals" ON "Referrals"."referrerId" = "Contacts"."id" GROUP BY "Contacts"."id", "Contacts"."name", "Contacts"."email", "Contacts"."points" ORDER BY referrerCount DESC;').then(contacts => {
+      res.status(200).json(contacts[0])
+    }).catch(error => {
+      res.status(500).send(error.toString())
+    })
+  }
+  
   static delete() {
     // TODO: delete contact record (not specified in assignment scope)
   }

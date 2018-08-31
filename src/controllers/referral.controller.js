@@ -45,7 +45,7 @@ class referralController {
                 })
               }
             })
-            res.status(200).send(createdReferral)
+            res.status(200).json(createdReferral)
           }
         ).catch(error => {
           res.status(500).send(error.toString())
