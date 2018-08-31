@@ -4,7 +4,7 @@
   "description": "A system that exposes REST endpoints that allows contacts of a system the ability to referral people to the system.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/**",
+    "test": "mocha spec/**",
     "dev": "nodemon src/server.js --watch src",
     "start": "node src/server.js",
     "db:create": "cd src/ && sequelize db:create",
@@ -32,22 +32,24 @@
   "homepage": "https://github.com/ruqoyyasadiq/referral-system-api#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chai": "^4.1.2",
+    "chai-http": "^4.2.0",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "mocha": "^5.2.0",
     "morgan": "^1.9.0",
     "pg": "^7.4.3",
     "sequelize": "^4.38.0",
+    "sequelize-test-helpers": "^1.0.4",
+    "sinon": "^6.1.5",
+    "sinon-chai": "^3.2.0",
+    "supertest": "^3.1.0",
     "validator": "^10.7.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.0.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.3",
-    "sequelize-test-helpers": "^1.0.4",
-    "sinon": "^6.1.5",
-    "sinon-chai": "^3.2.0"
+    "nodemon": "^1.18.3"
   }
 }

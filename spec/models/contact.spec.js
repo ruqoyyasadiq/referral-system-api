@@ -15,7 +15,6 @@ const ContactModel = require('../../src/models/Contact')
 describe('src/models/Contact', () => {
   const Contact = ContactModel(sequelize, dataTypes)
   const contact = new Contact()
-  console.log(contact, 'contact')
 
   checkModelName(Contact)('Contact')
 
