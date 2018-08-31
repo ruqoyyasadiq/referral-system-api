@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true
       }
     },
-    pointsEarned: {
+    points: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
