@@ -15,8 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     points: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0
+      allowNull: false
     }
   }, {});
   Contact.associate = models => {

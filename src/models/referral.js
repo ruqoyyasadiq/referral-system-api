@@ -13,16 +13,16 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true
       }
     },
-    // referrerId: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false
-    // }
+    pointsEarned: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {});
   Referral.associate = models => {
     // associations can be defined here
     Referral.belongsTo(models.Contact, {
       foreignKey: 'referrerId',
-      // onDelete: 'CASCADE'
+      onDelete: 'CASCADE'
     })
     Referral.belongsToMany(models.Event, {
       through: 'ReferralEvent'
