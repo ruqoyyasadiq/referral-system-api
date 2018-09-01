@@ -1,7 +1,6 @@
 const Referral = require('../models').Referral
 const Contact = require('../models').Contact
 const Event = require('../models').Event
-const { resourceExist } = require('../utils')
 const { EVENT_TYPE_REFERRAL_CREATED } = require('../constants')
 
 const REFERRAL_POINTS = process.env.REFERRAL_POINTS || 100 // set default value in case environment variable is not set.
@@ -17,7 +16,7 @@ class referralController {
     return Referral.findOne({
       where: { email }
     }).then(referral => {
-      if (!resourceExist(req, res, referral)) {
+      if (!referral) {
         return Referral
           .create({ email, name, points: REFERRAL_POINTS, referrerId })
           .then(createdReferral => {
@@ -48,7 +47,11 @@ class referralController {
             res.status(200).json(createdReferral)
           }
         ).catch(error => {
-          res.status(500).send(error.toString())
+          res.status(500).json({ error: error })
+        })
+      } else {
+        return res.status(409).json({
+          message: `Record already exists`
         })
       }
     })

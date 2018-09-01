@@ -30,3 +30,5 @@ models.sequelize.sync().then(() => {
     console.info(`App started on port ${port} on ${environment} environment`)
   })
 })
+
+module.exports = app

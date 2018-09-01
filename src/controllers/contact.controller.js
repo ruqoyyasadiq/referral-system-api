@@ -73,15 +73,34 @@ class contactController {
         message: 'Invalid Contact ID. Value must be an integer.'
       })
     } else {
-      return Contact.update(body, {
-        where: { id: contactId },
-        returning: true,
-        validate: true
-      }).then(updatedContact => {
-        res.status(200).json(updatedContact[1][0])
-      }).catch(error => {
-        res.status(500).send(error.toString())
-      })
+      return Contact.findById(contactId)
+        .then(contact => {
+          if (contact) {
+            if (body.points) {
+              body.points += contact.points
+            }
+            if (Object.keys(body).includes('email') && !validator.isEmail(body.email)) {
+              return res.status(400).json({
+                message: 'Invalid Email to update. Please specify a valid email'
+              })
+            }
+            Contact.update(body, {
+              where: { id: contactId },
+              returning: true,
+              validate: true
+            }).then(updatedContact => {
+              res.status(200).json(updatedContact[1][0])
+            }).catch(error => {
+              res.status(500).send(error.toString())
+            })
+          } else {
+            res.status(404).json({
+              message: "Unable to find contact to update."
+            })
+          }
+        }).catch(error => {
+          res.status(500).send(error.toString())
+        })
     }
   }
 
