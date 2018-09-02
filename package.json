@@ -39,6 +39,7 @@
     "express": "^4.16.3",
     "mocha": "^5.2.0",
     "morgan": "^1.9.0",
+    "node-fetch": "^2.2.0",
     "pg": "^7.4.3",
     "sequelize": "^4.38.0",
     "sequelize-test-helpers": "^1.0.4",

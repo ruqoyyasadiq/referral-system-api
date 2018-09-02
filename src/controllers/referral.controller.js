@@ -1,6 +1,7 @@
 const Referral = require('../models').Referral
 const Contact = require('../models').Contact
 const Event = require('../models').Event
+const SlackNotifier = require('../utils')
 const { EVENT_TYPE_REFERRAL_CREATED } = require('../constants')
 
 const REFERRAL_POINTS = process.env.REFERRAL_POINTS || 100 // set default value in case environment variable is not set.
@@ -33,18 +34,22 @@ class referralController {
                 Contact.update(modifiedContact, {
                   where: { id: referrerId },
                   returning: true
-                }).then(() => {
-                  Event.create({
-                    description: '',
-                    type: EVENT_TYPE_REFERRAL_CREATED,
-                    points: REFERRAL_POINTS,
-                    contactId: referrerId,
-                    referralId: createdReferral.dataValues.id
-                  })
                 })
+                Event.create({
+                  description: '',
+                  type: EVENT_TYPE_REFERRAL_CREATED,
+                  points: REFERRAL_POINTS,
+                  contactId: referrerId,
+                  referralId: createdReferral.dataValues.id
+                })
+                const description = `A new Referral has been made by ${contact.name}`
+                const slackWebhooklUrl = process.env.SLACK_WEBHOOK_URL || ''
+                if (slackWebhooklUrl) {
+                  SlackNotifier(slackWebhooklUrl, description)
+                }
               }
             })
-            res.status(200).json(createdReferral)
+            return res.status(200).json(createdReferral)
           }
         ).catch(error => {
           res.status(500).json({ error: error })
