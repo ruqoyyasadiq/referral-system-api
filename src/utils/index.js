@@ -1,20 +1,22 @@
+const fetch = require('node-fetch') // Because, the fetch API is not available in node
 /**
- * @description checks if resource exists
- * @param  {object} req - request from the client to the server
- * @param  {object} res - response from the server to the client
- * @param  {object} resource to be checked for
- * @return {boolean} true or false
+ * @description SlackNotifier - notifies specified slack users of an action made based on the description passed in.
+ * @param  {string} url - a give webhook slack URL. This can be obtained from https://api.slack.com/apps/
+ * @param  {string} description - the raw value of the payload to be sent slack
+ * @return Promise containing the response of the message post to slack
  */
-const resourceExist = (req, res, resource) => {
-  if (resource) {
-    res.status(409).json({
-      message: `Record already exists`
-    })
-    return true
+const SlackNotifier = (url, description) => {
+  const payload = {
+    'text':`Alert: ${description}`
   }
-  return false
+  const fetchData = {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    header: {
+      'Content-Type': 'application/json'
+    }
+  }
+  return fetch(url, fetchData)
 }
 
-module.exports = {
-  resourceExist
-}
+module.exports = SlackNotifier
