@@ -4,7 +4,7 @@
   "description": "A system that exposes REST endpoints that allows contacts of a system the ability to referral people to the system.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha spec/**",
+    "test": "NODE_ENV=test mocha spec/**",
     "dev": "nodemon src/server.js --watch src",
     "start": "node src/server.js",
     "db:create": "cd src/ && sequelize db:create",

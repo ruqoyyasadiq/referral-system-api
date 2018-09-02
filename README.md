@@ -56,6 +56,21 @@ npm run db:seed
 ```
 http://localhost:5000/v1/{resourceName}
 ```
+# Running Test
+- To  run the application test, begin by creating a test DB with:
+```
+createdb {test_db_name}
+```
+where `test_db_name` is `TEST_DB` as specified in `.env` file
+- Run test via npm scripts with command
+```
+npm test
+```
+or 
+```
+npm t
+```
+
 
 # Endpoints List
 | Endpoint Description  | Routes                    | Method  |
@@ -70,6 +85,7 @@ http://localhost:5000/v1/{resourceName}
 # TODOs
 - Paginate lists - Contacts and Leaderboard list
 - Implement actual `SlackNotifier` for referral creation
+- Refactor Referral Controller
 - Increase Test Coverage
 - Set up static table for points. Assumptions made is: down the line there would be multiple types of points for (possibly) different kinds/levels of referrals. This should live in the DB
 
