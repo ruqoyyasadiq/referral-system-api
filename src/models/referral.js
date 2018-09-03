@@ -21,7 +21,11 @@ module.exports = (sequelize, DataTypes) => {
   Referral.associate = models => {
     // associations can be defined here
     Referral.belongsTo(models.Contact, {
-      foreignKey: 'referrerId',
+      foreignKey: {
+        name : 'referrerId',
+        unique: false,
+        allowNull: true
+      },
       onDelete: 'CASCADE'
     })
     Referral.belongsToMany(models.Event, {
