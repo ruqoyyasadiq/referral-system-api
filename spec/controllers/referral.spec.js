@@ -3,6 +3,7 @@ const { expect } = require('chai')
 const app = require('../../src/server')
 const Contact = require('../../src/models').Contact
 const Referral = require('../../src/models').Referral
+const Event = require('../../src/models').Event
 
 
 const REFERRAL_POINTS = 100
@@ -25,7 +26,7 @@ describe('Referrals Endpoints /v1/referrals', () => {
         })
         .then(() => {
           if (!err) {
-            Contact.destroy({
+            Event.destroy({
               where: {},
               truncate: true,
               cascade: true,
